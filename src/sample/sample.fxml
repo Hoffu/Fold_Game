@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="152.0" prefWidth="265.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <center>
+       <FlowPane prefHeight="330.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+           <VBox>
+               <FlowPane.margin>
+                   <Insets left="10.0" right="10.0" />
+               </FlowPane.margin>
+               <Label fx:id="numbers" text="Label" />
+            <Label fx:id="support" layoutX="10.0" layoutY="10.0" text="Label"/>
+           </VBox>
+       </FlowPane>
+   </center>
+   <bottom>
+       <FlowPane prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+           <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+           </padding>
+         <TextField fx:id="input" prefHeight="25.0" prefWidth="120.0" promptText="Enter numbers">
+            <FlowPane.margin>
+               <Insets right="10.0" />
+            </FlowPane.margin>
+         </TextField>
+           <Button mnemonicParsing="false" onAction="#submitClicked" text="Submit" />
+       </FlowPane>
+   </bottom>
+   <top>
+       <FlowPane alignment="CENTER" prefHeight="69.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+           <Text fx:id="sum" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+       </FlowPane>
+   </top>
+</BorderPane>
