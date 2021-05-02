@@ -12,7 +12,11 @@
 **Статус**:
   - Alpha 1.1.
 
-**Скриншот**: 
+**Скриншот правил игры**: 
+
+![](https://sun9-64.userapi.com/impg/6Cu3JRC04L3yo7dTrlDkjbslXHd9sWS_uFDYbQ/qQv0wQyw6AU.jpg?size=355x257&quality=96&sign=a66fff9ddfcaf04f7b6289c83d773143&type=album)
+
+**Скриншот геймлея игры**
 
 ![](https://sun9-75.userapi.com/impg/H6Z_6-J4CNv2lfazPW2pSZ4LqGf2EUsVCYS_RQ/O_3Mei2WIJ4.jpg?size=323x178&quality=96&sign=93899879f4c494584e1ff3f5aa7e6039&type=album)
 
