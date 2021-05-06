@@ -27,7 +27,6 @@ public class Controller {
 
     public void initialize() {
         comboBox.setItems(FXCollections.observableArrayList(randomNumbers()));
-        comboBox.getSelectionModel().selectFirst();
 
         sum.setFill(Color.DARKCYAN);
         sum.setFont(Font.font("Calibri", 30));
@@ -84,7 +83,7 @@ public class Controller {
                 nums.append(",");
             }
 
-            int amountOfFakeNums = ThreadLocalRandom.current().nextInt(0, 3);
+            int amountOfFakeNums = ThreadLocalRandom.current().nextInt(0, 2);
             for (int k = 0; k < amountOfFakeNums; k++) {
                 nums.append(ThreadLocalRandom.current().nextInt(1, 15));
                 nums.append(",");
