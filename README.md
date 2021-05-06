@@ -18,7 +18,7 @@
 
 **Скриншот геймлея игры**
 
-![](https://sun9-75.userapi.com/impg/H6Z_6-J4CNv2lfazPW2pSZ4LqGf2EUsVCYS_RQ/O_3Mei2WIJ4.jpg?size=323x178&quality=96&sign=93899879f4c494584e1ff3f5aa7e6039&type=album)
+![](https://sun2.informsvyaz.userapi.com/impg/Om7ehH99kuAtIFu_vNIRHxUVQTRQxner8CXsRQ/-i_iBfFCzAE.jpg?size=322x401&quality=96&sign=4b2531635bd0594ece77fe429a999ba9&type=album)
 
 ## Зависимости
 
