@@ -7,13 +7,14 @@ title __SAMPLE's Class Diagram__\n
         {static} + LOSS : int
         {static} + RESTART : int
         {static} + SUCCESS : int
-        + input : TextField
-        + numbers : Label
+        + comboBox : ComboBox
         + sum : Text
         + support : Label
+        - answerStr : String
         - count : int
         - sumNumber : int
         + initialize()
+        + pickNumber()
         + randomNumbers()
         + restartGame()
         + submitClicked()

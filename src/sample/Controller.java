@@ -18,6 +18,7 @@ public class Controller {
     public Handler chain;
     public Label support;
     public ComboBox comboBox;
+    public Label output;
     private int sumNumber;
     public static int SUCCESS = 1;
     public static int LOSS = 3;
@@ -106,7 +107,7 @@ public class Controller {
             String str = comboBox.getValue().toString();
             answerStr += str;
             answerStr += ",";
-            System.out.println(answerStr);
+            output.setText("Выбранные числа: " + answerStr.substring(0, answerStr.length() - 1));
         } catch (Exception ignored) {
 
         }
