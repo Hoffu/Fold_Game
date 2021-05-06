@@ -20,17 +20,13 @@
 
 ![](https://sun9-75.userapi.com/impg/H6Z_6-J4CNv2lfazPW2pSZ4LqGf2EUsVCYS_RQ/O_3Mei2WIJ4.jpg?size=323x178&quality=96&sign=93899879f4c494584e1ff3f5aa7e6039&type=album)
 
-**Диаграмма классов**
+## Зависимости
 
 ![](https://sun9-5.userapi.com/impg/l9X5nYLrPX3Wsakb8ja8DJLtKnLeTkhKcMui7g/za584S0PZs4.jpg?size=482x559&quality=96&sign=12c15a8f114e26966d4b8a95d7ae152e&type=album)
 
-## Зависимости
-
-Для работы требуется библиотека JavaFX.
-
 ## Конфигурация
 
-Настройка не требуется.
+Для работы требуется библиотека JavaFX.
 
 ## Использование
 
