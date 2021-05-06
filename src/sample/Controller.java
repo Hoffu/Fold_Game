@@ -63,8 +63,9 @@ public class Controller {
             support.setVisible(false);
         } else {
             chain.process(LOSS);
+            answerStr = "";
             count++;
-            System.out.println(count);
+            output.setText("Выбранные числа: ");
             if (count == 3) support.setVisible(true);
         }
     }
