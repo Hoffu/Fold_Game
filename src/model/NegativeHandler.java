@@ -9,13 +9,21 @@ import java.util.Optional;
 import static sample.Controller.LOSS;
 
 public class NegativeHandler extends Handler {
-    public NegativeHandler(Handler processor) {
+    private GameController gameController;
+
+    public NegativeHandler(Handler processor, GameController gameController) {
         super(processor);
+        this.gameController = gameController;
     }
 
     public boolean process(Integer request) {
         if (request != LOSS) return super.process(request);
         else {
+            gameController.setAnswerStr("");
+            int temp = gameController.getCount();
+            gameController.setCount(temp + 1);
+            if (gameController.getCount() == 3) gameController.setSupportMessage(true);
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Неправильно");
             alert.setHeaderText("Попробуйте еще раз");

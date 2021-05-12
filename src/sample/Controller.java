@@ -6,29 +6,20 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import model.Handler;
-import model.NegativeHandler;
-import model.PositiveHandler;
-import model.RestartHandler;
-
-import java.util.concurrent.ThreadLocalRandom;
+import model.GameController;
 
 public class Controller {
     public Text sum;
-    public Handler chain;
     public Label support;
     public ComboBox comboBox;
     public Label output;
-    private int sumNumber;
-    public static int SUCCESS = 1;
-    public static int LOSS = 3;
-    public static int RESTART = 2;
-    private int count = 0;
-    private String answerStr = "";
+    public static int SUCCESS = 10;
+    public static int RESTART = 4;
+    public static int LOSS = 9;
+    private final GameController gameController = new GameController();
 
     public void initialize() {
-        comboBox.setItems(FXCollections.observableArrayList(randomNumbers()));
-
+        comboBox.setItems(FXCollections.observableArrayList(gameController.randomNumbers()));
         sum.setFill(Color.DARKCYAN);
         sum.setFont(Font.font("Calibri", 30));
         support.setVisible(false);
@@ -46,69 +37,27 @@ public class Controller {
     }
 
     public void submitClicked(ActionEvent actionEvent) {
-        chain = new PositiveHandler(new NegativeHandler(new RestartHandler(null)));
-        String[] temp = answerStr.split(",");
-        int sumOfNumbersFromInput = 0;
-        for (String str : temp) {
-            if (!str.equals(""))
-                sumOfNumbersFromInput += Integer.parseInt(str);
-        }
-        if (sumOfNumbersFromInput == sumNumber) {
-            chain.process(SUCCESS);
-            restartGame();
-        } else if (count == 4) {
-            chain.process(RESTART);
-            restartGame();
-            count = 0;
-            support.setVisible(false);
-        } else {
-            chain.process(LOSS);
-            answerStr = "";
-            count++;
-            output.setText("Выбранные числа: ");
-            if (count == 3) support.setVisible(true);
-        }
-    }
-
-    public String[] randomNumbers() {
-        int amountOfNumbers = ThreadLocalRandom.current().nextInt(2, 5);
-        int[] numbers = new int[amountOfNumbers];
-        StringBuilder nums = new StringBuilder();
-        sumNumber = 0;
-        for (int i = 0; i < amountOfNumbers; i++) {
-            numbers[i] = ThreadLocalRandom.current().nextInt(1, 15);
-            sumNumber += numbers[i];
-        }
-        for (int i = 0; i < 10; i++) {
-            if (i < amountOfNumbers) {
-                nums.append(numbers[i]);
-                nums.append(",");
-            }
-
-            int amountOfFakeNums = ThreadLocalRandom.current().nextInt(0, 2);
-            for (int k = 0; k < amountOfFakeNums; k++) {
-                nums.append(ThreadLocalRandom.current().nextInt(1, 15));
-                nums.append(",");
-            }
-        }
-        int temp = ThreadLocalRandom.current().nextInt(1, numbers.length);
-        support.setText("Одно из чисел: " + numbers[temp]);
-        return nums.toString().substring(0, nums.length() - 1).split(",");
+        boolean checkRestart = gameController.chainAction();
+        if (checkRestart) restartGame();
+        support.setVisible(gameController.isSupportMessage());
+        output.setText("Выбранные числа: ");
     }
 
     public void restartGame() {
-        comboBox.setItems(FXCollections.observableArrayList(randomNumbers()));
-        sum.setText(Integer.toBinaryString(sumNumber));
-//        sum.setText(String.valueOf(sumNumber));
-        answerStr = "";
+        comboBox.setItems(FXCollections.observableArrayList(gameController.randomNumbers()));
+        sum.setText(Integer.toBinaryString(gameController.getSumNumber()));
+//        sum.setText(String.valueOf(gameController.getSumNumber()));
+        gameController.setAnswerStr("");
+        support.setText("Одно из требуемых чисел: " + gameController.getSupportNumber());
     }
 
     public void pickNumber(ActionEvent actionEvent) {
         try {
-            String str = comboBox.getValue().toString();
-            answerStr += str;
-            answerStr += ",";
-            output.setText("Выбранные числа: " + answerStr.substring(0, answerStr.length() - 1));
+            String str = gameController.getAnswerStr();
+            str += comboBox.getValue().toString();
+            str += ",";
+            gameController.setAnswerStr(str);
+            output.setText("Выбранные числа: " + gameController.getAnswerStr().substring(0, gameController.getAnswerStr().length() - 1));
         } catch (Exception ignored) {
 
         }

@@ -9,13 +9,21 @@ import java.util.Optional;
 import static sample.Controller.RESTART;
 
 public class RestartHandler extends Handler {
-    public RestartHandler(Handler processor) {
+    private GameController gameController;
+
+    public RestartHandler(Handler processor, GameController gameController) {
         super(processor);
+        this.gameController = gameController;
     }
 
     public boolean process(Integer request) {
         if (request != RESTART) return super.process(request);
         else {
+            gameController.setCheck(true);
+            gameController.setCount(0);
+            gameController.setSupportMessage(false);
+            gameController.setAnswerStr("");
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Вы проиграли!");
             alert.setHeaderText("Начните новую игру");
