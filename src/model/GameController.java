@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GameController {
     private int sumNumber;
     private int supportNumber;
-    private String answerStr;
+    private int[] answerNumbers;
     private int count = 0;
     private boolean supportMessage = false;
     private boolean check;
@@ -38,12 +38,10 @@ public class GameController {
     public boolean chainAction() {
         check = false;
         Handler chain = new PositiveHandler(new NegativeHandler(new RestartHandler(null, this), this), this);
-        String[] temp = answerStr.split(",");
         int chainNum = count;
         int sumOfNumbersFromInput = 0;
-        for (String str : temp) {
-            if (!str.equals(""))
-                sumOfNumbersFromInput += Integer.parseInt(str);
+        for (int number : answerNumbers) {
+            sumOfNumbersFromInput += number;
         }
         if (sumOfNumbersFromInput == sumNumber) {
             chainNum = 10;
@@ -62,12 +60,12 @@ public class GameController {
         return supportNumber;
     }
 
-    public String getAnswerStr() {
-        return answerStr;
+    public int[] getAnswerNumbers() {
+        return answerNumbers;
     }
 
-    public void setAnswerStr(String answerStr) {
-        this.answerStr = answerStr;
+    public void setAnswerNumbers(int[] answerNumbers) {
+        this.answerNumbers = answerNumbers;
     }
 
     public boolean isSupportMessage() {

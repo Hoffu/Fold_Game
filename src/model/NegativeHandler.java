@@ -19,7 +19,7 @@ public class NegativeHandler extends Handler {
     public boolean process(Integer request) {
         if (request != LOSS) return super.process(request);
         else {
-            gameController.setAnswerStr("");
+            gameController.setAnswerNumbers(new int[]{});
             int temp = gameController.getCount();
             gameController.setCount(temp + 1);
             if (gameController.getCount() == 3) gameController.setSupportMessage(true);

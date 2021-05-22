@@ -22,7 +22,7 @@ public class RestartHandler extends Handler {
             gameController.setCheck(true);
             gameController.setCount(0);
             gameController.setSupportMessage(false);
-            gameController.setAnswerStr("");
+            gameController.setAnswerNumbers(new int[]{});
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Вы проиграли!");

@@ -21,7 +21,7 @@ public class PositiveHandler extends Handler {
         else {
             gameController.setCheck(true);
             gameController.setSupportMessage(false);
-            gameController.setAnswerStr("");
+            gameController.setAnswerNumbers(new int[]{});
             gameController.setCount(0);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

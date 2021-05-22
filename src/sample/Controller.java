@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.beans.binding.Binding;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -7,6 +9,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.GameController;
+
+import java.util.concurrent.Callable;
 
 public class Controller {
     public Text sum;
@@ -47,17 +51,25 @@ public class Controller {
         comboBox.setItems(FXCollections.observableArrayList(gameController.randomNumbers()));
         sum.setText(Integer.toBinaryString(gameController.getSumNumber()));
 //        sum.setText(String.valueOf(gameController.getSumNumber()));
-        gameController.setAnswerStr("");
+        gameController.setAnswerNumbers(new int[]{});
         support.setText("Одно из требуемых чисел: " + gameController.getSupportNumber());
     }
 
     public void pickNumber(ActionEvent actionEvent) {
         try {
-            String str = gameController.getAnswerStr();
-            str += comboBox.getValue().toString();
-            str += ",";
-            gameController.setAnswerStr(str);
-            output.setText("Выбранные числа: " + gameController.getAnswerStr().substring(0, gameController.getAnswerStr().length() - 1));
+            int[] temp = new int[gameController.getAnswerNumbers().length + 1];
+            int i = 0;
+            StringBuilder answer = new StringBuilder();
+            for (int number : gameController.getAnswerNumbers()) {
+                answer.append(number);
+                answer.append(", ");
+                temp[i] = number;
+                i++;
+            }
+            answer.append(comboBox.getValue().toString());
+            output.setText("Выбранные числа: " + answer);
+            temp[i] = Integer.parseInt(comboBox.getValue().toString());
+            gameController.setAnswerNumbers(temp);
         } catch (Exception ignored) {
 
         }
