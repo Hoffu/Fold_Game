@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.beans.binding.Binding;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -9,8 +7,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.GameController;
-
-import java.util.concurrent.Callable;
 
 public class Controller {
     public Text sum;

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameController {
@@ -10,29 +11,24 @@ public class GameController {
     private boolean supportMessage = false;
     private boolean check;
 
-    public String[] randomNumbers() {
+    public ArrayList<Integer> randomNumbers() {
         int amountOfNumbers = ThreadLocalRandom.current().nextInt(2, 5);
         int[] numbers = new int[amountOfNumbers];
-        StringBuilder nums = new StringBuilder();
         sumNumber = 0;
         for (int i = 0; i < amountOfNumbers; i++) {
             numbers[i] = ThreadLocalRandom.current().nextInt(1, 15);
             sumNumber += numbers[i];
         }
-        for (int i = 0; i < 10; i++) {
-            if (i < amountOfNumbers) {
-                nums.append(numbers[i]);
-                nums.append(",");
-            }
-
+        ArrayList<Integer> numbersWithFakeNums = new ArrayList<Integer>();
+        for (int num : numbers) {
+            numbersWithFakeNums.add(num);
             int amountOfFakeNums = ThreadLocalRandom.current().nextInt(0, 2);
             for (int k = 0; k < amountOfFakeNums; k++) {
-                nums.append(ThreadLocalRandom.current().nextInt(1, 15));
-                nums.append(",");
+                numbersWithFakeNums.add(ThreadLocalRandom.current().nextInt(1, 15));
             }
         }
         supportNumber = numbers[ThreadLocalRandom.current().nextInt(1, numbers.length)];
-        return nums.substring(0, nums.length() - 1).split(",");
+        return numbersWithFakeNums;
     }
 
     public boolean chainAction() {
